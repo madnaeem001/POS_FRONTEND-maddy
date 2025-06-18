@@ -1,0 +1,81 @@
+﻿<Window x:Class="POS_FRONTEND.appItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="appItem" Height="500" Width="800" Background="White">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 1: P_ID and P_Name -->
+        <TextBlock Text="Product ID:" VerticalAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="0" />
+        <TextBox Name="txtP_ID" Height="30" Grid.Row="0" Grid.Column="1" Margin="5,26,98,26" IsReadOnly="True" />
+
+        <TextBlock Text="Product Name:" VerticalAlignment="Center" Margin="243,0,59,0" Grid.Column="1" Grid.ColumnSpan="2" />
+        <TextBox Name="txtP_Name" Height="30" Grid.Row="0" Grid.Column="2" Margin="48,27,59,25" Grid.ColumnSpan="2" />
+
+        <!-- Row 2: Supplier Dropdown and Manufacturer Dropdown with Reload Button -->
+        <TextBlock Text="Supplier:" VerticalAlignment="Center" Margin="5" Grid.Row="1" Grid.Column="0" />
+        <ComboBox Name="cmbSupplier" Height="30" Grid.Row="1" Grid.Column="1" Margin="5,27,98,26" SelectionChanged="cmbSupplier_SelectionChanged" />
+
+
+
+
+        <TextBlock Text="Manufacturer:" VerticalAlignment="Center" Margin="243,0,59,0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="42,0,54,0">
+            <ComboBox Name="cmbManufacturer" Height="30" Width="150" Margin="5" />
+            <Button Width="30" Height="30" Margin="5,0,0,0" ToolTip="Reload" Cursor="Hand" Click="btnReload_Click">
+                <Viewbox>
+                    <!-- Reload Icon -->
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M12,2 A10,10 0 1,1 5,6 L7,4 M12,2" 
+                              Stroke="Black" StrokeThickness="2" Fill="Transparent"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+        </StackPanel>
+
+        <!-- Row 3: Stock Quantity and Expiry Date -->
+        <TextBlock Text="Stock Quantity:" VerticalAlignment="Center" Margin="5" Grid.Row="2" Grid.Column="0" />
+        <TextBox Name="txtStockQuantity" Height="30" Grid.Row="2" Grid.Column="1" Margin="5,26,98,26" />
+
+        <TextBlock Text="Expiry Date:" VerticalAlignment="Center" Margin="243,0,59,0" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+        <DatePicker Name="dpExpiryDate" Height="30" Grid.Row="2" Grid.Column="2" Margin="48,26,59,26" Grid.ColumnSpan="2" />
+
+        <!-- Row 4: Cost Price and Sale Price -->
+        <TextBlock Text="Cost Price:" VerticalAlignment="Center" Margin="5" Grid.Row="3" Grid.Column="0" />
+        <TextBox Name="txtCostPrice" Height="30" Grid.Row="3" Grid.Column="1" Margin="5,26,98,26" TextChanged="PriceFields_TextChanged" />
+
+        <TextBlock Text="Sale Price:" VerticalAlignment="Center" Margin="243,0,59,0" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+        <TextBox Name="txtSalePrice" Height="30" Grid.Row="3" Grid.Column="2" Margin="48,27,59,25" Grid.ColumnSpan="2" TextChanged="PriceFields_TextChanged" />
+
+        <!-- Row 5: Price Difference -->
+        <TextBlock Text="Profit:" VerticalAlignment="Center" Margin="5" Grid.Row="4" Grid.Column="0" />
+        <TextBox Name="txtPriceDifference" IsReadOnly="True" Height="30" Grid.Row="4" Grid.Column="1" Margin="5,27,98,26" />
+
+        <!-- Row 6: Parameter and Category Dropdown -->
+        <TextBlock Text="Min Stock Limit:" VerticalAlignment="Center" Margin="5" Grid.Row="5" Grid.Column="0" />
+        <TextBox Name="txtParameter" Height="30" Grid.Row="5" Grid.Column="1" Margin="5,26,98,26" />
+        <ComboBox Name="cmbCategory" Height="30" Grid.Row="4" Grid.Column="2" Margin="48,26,59,22" Grid.ColumnSpan="2" SelectionChanged="cmbCategory_SelectionChanged" />
+        <TextBlock Text="Category:" VerticalAlignment="Center" Margin="243,0,59,0" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <Button Margin="76,23,88,23" Background="#1F2937" Foreground="White" FontWeight="Bold" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2">
+            <TextBlock Text="Save" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        </Button>
+
+    </Grid>
+</Window>

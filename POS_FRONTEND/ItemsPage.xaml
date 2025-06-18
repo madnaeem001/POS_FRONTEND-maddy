@@ -1,0 +1,74 @@
+﻿<Window x:Class="POSSystem.ItemsPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Items - POS System" Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen" Background="#F8F9FA">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="334*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="345*" />
+        </Grid.RowDefinitions>
+        <!-- Header Section -->
+        <DockPanel Background="White" Height="89" VerticalAlignment="Top" Margin="262,4,18,0">
+            <TextBlock Text="Items" FontSize="30" FontWeight="Bold" Foreground="#1F2937" Margin="20" HorizontalAlignment="Left" />
+        </DockPanel>
+
+        <!-- Sidebar Navigation -->
+        <!-- Sidebar Navigation -->
+        <StackPanel Background="#1F2937" Width="250" HorizontalAlignment="Left" Grid.RowSpan="3">
+            <TextBlock Text="POS System" FontSize="24" FontWeight="Bold" Foreground="White" Margin="20" />
+            <Button Content="Dashboard" Margin="10" Background="#1F2937" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Sales" Click="SalesButton_Click" Margin="10" Background="#1F2937" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Items" Margin="10" Background="#3F4C67" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Categories" Margin="10"   Click="Goto_Cat" Background="#1F2937" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Suppliers" Margin="10"  Background="#1F2937" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Reports" Click="Goto_Reports" Margin="10" Background="#1F2937" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Settings" Margin="10"  Click="Goto_Settings" Background="#1F2937" Foreground="White" BorderBrush="Transparent" Height="50" />
+            <Button Content="Logout" Margin="10" Background="#FF4C4C" Foreground="White" BorderBrush="Transparent" Height="50" Click="LogoutButton_Click"/>
+        </StackPanel>
+
+        <!-- Title and Filter Section -->
+
+
+        <!-- DataGrid Section -->
+         <DataGrid Name="SalesDataGrid" Margin="272,155,28,76" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserSortColumns="True" SelectionMode="Single" IsReadOnly="True" Grid.RowSpan="3" SelectionChanged="SalesDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product ID" Binding="{Binding CustomerName}" Width="150" />
+                <DataGridTextColumn Header="Product Name" Binding="{Binding ItemName}" Width="200" />
+                <DataGridTextColumn Header="Supplier" Binding="{Binding StockCode}" Width="100" />
+                <DataGridTextColumn Header="Manufacturer" Binding="{Binding ItemsSold}" Width="100" />
+                <DataGridTextColumn Header="Stock Quantity" Binding="{Binding Category}" Width="100" />
+                <DataGridTextColumn Header="Expiry Date" Binding="{Binding Supplier}" Width="150" />
+                <DataGridTextColumn Header="Cost Price" Binding="{Binding StockLevel}" Width="100" />
+                <DataGridTextColumn Header="Sale Price" Binding="{Binding Price}" Width="100" />
+                <DataGridTextColumn Header="Profit" Binding="{Binding Cost}" Width="100" />
+                <DataGridTextColumn Header="Min Stock Limit" Binding="{Binding Profit}" Width="100" />
+                <DataGridTextColumn Header="Margin" Binding="{Binding Margin}" Width="100" />
+                <DataGridTextColumn Header="Markup" Binding="{Binding Markup}" Width="100" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <!-- ADD Category -->
+        <!-- Add item -->
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="591,301,0,0" Grid.Row="2" Width="360" VerticalAlignment="Top">
+            <Button Content="Add Item" Width="120" Height="30" Background="#3498DB" Foreground="White" Click="openAddItems" Margin="0,0,10,0"/>
+            <Button Content="Remove Item" Width="120" Height="30" Background="#3498DB" Foreground="White" Click="Button_Click" Margin="0,0,10,0" />
+            <Button Content="Edit Item" Width="120" Height="30" Background="#3498DB" Foreground="White" Click="openEditItems" />
+        </StackPanel>
+        <CheckBox Content="All Items" Margin="272,131,910,194" Checked="CheckBox_Checked_1" />
+        <CheckBox Content="Expired Items" Margin="397,131,785,194" Checked="CheckBox_Checked" />
+        <CheckBox Content="Sold Items" Margin="542,131,640,194" />
+        <TextBox Name="SearchBox" 
+             TextChanged="SearchBox_TextChanged"
+             GotFocus="SearchBox_GotFocus"
+             LostFocus="SearchBox_LostFocus"
+             Text="Search..." 
+             Foreground="Gray"
+             Height="19" Margin="941,131,164,0" VerticalAlignment="Top" />
+
+
+    </Grid>
+</Window>
